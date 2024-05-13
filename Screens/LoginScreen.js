@@ -1,6 +1,5 @@
-// LoginScreen.js
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, Button, View } from 'react-native';
+import { StyleSheet, Text, TextInput, Button, View, TouchableOpacity } from 'react-native';
 
 const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
@@ -15,7 +14,7 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text>Login</Text>
+      <Text style={styles.title}>Login</Text>
       <TextInput
         placeholder="Username"
         value={username}
@@ -29,7 +28,13 @@ const LoginScreen = ({ navigation }) => {
         secureTextEntry
         style={styles.input}
       />
-      <Button title="Login" onPress={handleLogin} />
+      <Button title="Login" onPress={handleLogin} color="#841584" />
+      <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
+        <Text style={styles.signupText}>
+          Don't have an account?{' '}
+          <Text style={styles.signupLink}>Sign up</Text>
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -39,12 +44,31 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#f5f5f5',
+    padding: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    color: '#333',
   },
   input: {
     width: '80%',
     borderWidth: 1,
+    borderColor: '#ccc',
     padding: 10,
     marginBottom: 10,
+    borderRadius: 5,
+    backgroundColor: '#fff',
+  },
+  signupText: {
+    marginTop: 20,
+    color: '#333',
+  },
+  signupLink: {
+    color: '#841584',
+    textDecorationLine: 'underline',
   },
 });
 
