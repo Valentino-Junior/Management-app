@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, Button, View } from 'react-native';
-import HomeScreen from './HomeScreen';
+
 
 const SignupScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -10,7 +10,7 @@ const SignupScreen = ({ navigation }) => {
     // Perform signup logic here
     // For example, you can create a new user account
     // If signup is successful, navigate to HomeScreen
-    navigation.navigate('Home');
+    navigation.navigate('Main');
   };
 
   return (
