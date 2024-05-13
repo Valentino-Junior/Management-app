@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, Button, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TextInput, Button, View, TouchableOpacity, ActivityIndicator } from 'react-native';
 
 const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = () => {
+    setLoading(true);
     // Perform login logic here
-    // For example, you can check the credentials against a database
-    // If login is successful, navigate to HomeScreen
-    navigation.navigate('Main');
+    // Simulate a network request
+    setTimeout(() => {
+      setLoading(false);
+      navigation.navigate('Main');
+    }, 1000);
   };
 
   return (
@@ -28,7 +32,11 @@ const LoginScreen = ({ navigation }) => {
         secureTextEntry
         style={styles.input}
       />
-      <Button title="Login" onPress={handleLogin} color="#841584" />
+      {loading ? (
+        <ActivityIndicator size="large" color="#841584" />
+      ) : (
+        <Button title="Login" onPress={handleLogin} color="#841584" />
+      )}
       <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
         <Text style={styles.signupText}>
           Don't have an account?{' '}
