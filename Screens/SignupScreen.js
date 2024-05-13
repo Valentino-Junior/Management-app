@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, Button, View } from 'react-native';
-
+import { StyleSheet, Text, TextInput, Button, View, TouchableOpacity } from 'react-native';
 
 const SignupScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -15,7 +14,7 @@ const SignupScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text>Sign Up</Text>
+      <Text style={styles.title}>Sign Up</Text>
       <TextInput
         placeholder="Email"
         value={email}
@@ -29,7 +28,13 @@ const SignupScreen = ({ navigation }) => {
         secureTextEntry
         style={styles.input}
       />
-      <Button title="Sign Up" onPress={handleSignup} />
+      <Button title="Sign Up" onPress={handleSignup} color="#841584" />
+      <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+        <Text style={styles.loginText}>
+          Already have an account?{' '}
+          <Text style={styles.loginLink}>Login</Text>
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -39,12 +44,31 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#f5f5f5',
+    padding: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    color: '#333',
   },
   input: {
     width: '80%',
     borderWidth: 1,
+    borderColor: '#ccc',
     padding: 10,
     marginBottom: 10,
+    borderRadius: 5,
+    backgroundColor: '#fff',
+  },
+  loginText: {
+    marginTop: 20,
+    color: '#333',
+  },
+  loginLink: {
+    color: '#841584',
+    textDecorationLine: 'underline',
   },
 });
 
