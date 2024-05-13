@@ -10,7 +10,7 @@ const LoginScreen = ({ navigation }) => {
     // Perform login logic here
     // For example, you can check the credentials against a database
     // If login is successful, navigate to HomeScreen
-    navigation.navigate('Home');
+    navigation.navigate('Main');
   };
 
   return (
