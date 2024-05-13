@@ -33,7 +33,7 @@ function MainTabNavigator() {
         },
       })}
       tabBarOptions={{
-        activeTintColor: 'tomato',
+        activeTintColor: '#841584',
         inactiveTintColor: 'gray',
       }}
     >
