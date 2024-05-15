@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, Animated, Easing } from 'react-native';
-import * as ImagePicker from 'react-native-image-picker';
+import * as ImagePicker from 'expo-image-picker';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -9,78 +9,105 @@ const ProfileScreen = () => {
   const [name, setName] = useState('John Doe');
   const [email, setEmail] = useState('johndoe@example.com');
   const [phone, setPhone] = useState('123-456-7890');
+  const [isEditing, setIsEditing] = useState(false);
+  const [photoScale] = useState(new Animated.Value(1));
   const navigation = useNavigation();
 
-  const handleChoosePhoto = () => {
-    ImagePicker.launchImageLibrary({ noData: true }, (response) => {
-      if (response.assets) {
-        setPhoto(response.assets[0]);
-      }
+  useEffect(() => {
+    if (photo) {
+      Animated.timing(photoScale, {
+        toValue: 1.1,
+        duration: 300,
+        easing: Easing.linear,
+        useNativeDriver: true,
+      }).start();
+    } else {
+      Animated.timing(photoScale, {
+        toValue: 1,
+        duration: 300,
+        easing: Easing.linear,
+        useNativeDriver: true,
+      }).start();
+    }
+  }, [photo]);
+
+  const handleChoosePhoto = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
     });
+
+    if (!result.cancelled) {
+      setPhoto(result.uri);
+    }
   };
 
-  const handleEditPhoto = () => {
-    ImagePicker.launchCamera({ noData: true }, (response) => {
-      if (response.assets) {
-        setPhoto(response.assets[0]);
-      }
-    });
+  const handleSave = () => {
+    // Save the updated details
+    setIsEditing(false);
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Profile</Text>
+      <Text style={styles.title}>Profile</Text>
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
           <MaterialIcons name="arrow-back" size={28} color="black" />
         </TouchableOpacity>
       </View>
-      <View style={styles.profileContainer}>
-        <TouchableOpacity onPress={handleChoosePhoto}>
+      <TouchableOpacity onPress={handleChoosePhoto}>
+        <Animated.View style={[styles.profileContainer, { transform: [{ scale: photoScale }] }]}>
           <Image
-            source={photo ? { uri: photo.uri } : require('../assets/valor.png')}
+            source={photo ? { uri: photo } : require('../assets/valor.png')}
             style={styles.profilePhoto}
           />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={handleEditPhoto} style={styles.editIcon}>
-          <MaterialIcons name="edit" size={20} color="white" />
-        </TouchableOpacity>
-      </View>
-      <View style={styles.detailsContainer}>
-        <Text style={styles.label}>Name</Text>
-        <TextInput
-          style={styles.input}
-          value={name}
-          onChangeText={setName}
-        />
-        <Text style={styles.label}>Email</Text>
-        <TextInput
-          style={styles.input}
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
-        />
-        <Text style={styles.label}>Phone</Text>
-        <TextInput
-          style={styles.input}
-          value={phone}
-          onChangeText={setPhone}
-          keyboardType="phone-pad"
-        />
-      </View>
-      <TouchableOpacity style={styles.saveButton}>
-        <Text style={styles.saveButtonText}>Save</Text>
+          <MaterialIcons name="edit" size={24} color="white" style={styles.editIcon} />
+        </Animated.View>
       </TouchableOpacity>
+      <Text style={styles.label}>Name</Text>
+      <TextInput
+        style={[styles.input, isEditing && styles.inputEditing]}
+        value={name}
+        onChangeText={setName}
+        editable={isEditing}
+      />
+      <Text style={styles.label}>Email</Text>
+      <TextInput
+        style={[styles.input, isEditing && styles.inputEditing]}
+        value={email}
+        onChangeText={setEmail}
+        keyboardType="email-address"
+        editable={isEditing}
+      />
+      <Text style={styles.label}>Phone</Text>
+      <TextInput
+        style={[styles.input, isEditing && styles.inputEditing]}
+        value={phone}
+        onChangeText={setPhone}
+        keyboardType="phone-pad"
+        editable={isEditing}
+      />
+      {!isEditing && (
+        <TouchableOpacity onPress={() => setIsEditing(true)} style={styles.editButton}>
+          <Text style={styles.editButtonText}>Edit</Text>
+        </TouchableOpacity>
+      )}
+      {isEditing && (
+        <TouchableOpacity onPress={handleSave} style={styles.saveButton}>
+          <Text style={styles.saveButtonText}>Save</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
 
-export default ProfileScreen;
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    alignItems: 'center',
+    backgroundColor: '#f9f9f9',
     padding: 20,
   },
   header: {
@@ -97,28 +124,27 @@ const styles = StyleSheet.create({
   backButton: {
     position: 'absolute',
     left: 0,
+    paddingHorizontal: 10,
   },
   profileContainer: {
     alignItems: 'center',
     marginBottom: 30,
+    overflow: 'hidden',
+    borderRadius: 100,
+    borderWidth: 3,
+    borderColor: '#841584',
   },
   profilePhoto: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    borderWidth: 2,
-    borderColor: '#841584',
+    width: 150,
+    height: 150,
   },
   editIcon: {
     position: 'absolute',
-    right: 0,
-    bottom: 0,
+    bottom: 5,
+    right: 5,
     backgroundColor: '#841584',
-    borderRadius: 10,
+    borderRadius: 50,
     padding: 5,
-  },
-  detailsContainer: {
-    marginBottom: 20,
   },
   label: {
     fontSize: 16,
@@ -126,20 +152,40 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   input: {
-    backgroundColor: '#f1f1f1',
+    backgroundColor: '#fff',
     padding: 10,
     borderRadius: 5,
     marginBottom: 20,
+    width: '100%',
+  },
+  inputEditing: {
+    borderWidth: 1,
+    borderColor: '#841584',
+  },
+  editButton: {
+    backgroundColor: '#841584',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    marginBottom: 10,
+  },
+  editButtonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
   saveButton: {
     backgroundColor: '#841584',
     paddingVertical: 10,
+    paddingHorizontal: 20,
     borderRadius: 5,
-    alignItems: 'center',
+    marginBottom: 10,
   },
   saveButtonText: {
-    color: '#ffffff',
+    color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
   },
 });
+
+export default ProfileScreen;
