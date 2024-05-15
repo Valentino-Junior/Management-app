@@ -52,7 +52,7 @@ const ProfileScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-      <Text style={styles.title}>Profile</Text>
+        <Text style={styles.title}>Profile</Text>
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
           <MaterialIcons name="arrow-back" size={28} color="black" />
         </TouchableOpacity>
@@ -189,3 +189,4 @@ const styles = StyleSheet.create({
 });
 
 export default ProfileScreen;
+
