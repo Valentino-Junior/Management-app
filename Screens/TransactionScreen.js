@@ -9,6 +9,6 @@ const Transactions = () => {
   )
 }
 
-export default Transactions
+export default TransactionScreen
 
 const styles = StyleSheet.create({})
