@@ -10,7 +10,6 @@ import ProfileScreen from './Screens/ProfileScreen';
 import WelcomeScreen from './Screens/WelcomeScreen';
 import LoginScreen from './Screens/LoginScreen';
 import SignupScreen from './Screens/SignupScreen';
-import Transactions from './Screens/TransactionScreen';
 import TransactionScreen from './Screens/TransactionScreen';
 
 const Stack = createStackNavigator();
