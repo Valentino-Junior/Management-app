@@ -95,7 +95,7 @@ const HomeScreen = () => {
           <Text style={styles.menuItem}>Features</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Tenants')}>
-          <Text style={styles.menuItem}>Tenants</Text>
+          <Text style={styles.menuItem}>Transactions</Text>
         </TouchableOpacity>
         
         <View style={styles.footer}>
@@ -109,7 +109,7 @@ const HomeScreen = () => {
         <TouchableOpacity onPress={toggleMenu} style={styles.menuButton}>
           <MaterialIcons name="menu" size={28} color="black" />
         </TouchableOpacity>
-        <Text style={styles.title}>Management</Text>
+        <Text style={styles.title}>Valor Management</Text>
         <Image
           source={require('../assets/valor.png')}
           style={styles.logo}
