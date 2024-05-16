@@ -94,7 +94,7 @@ const HomeScreen = () => {
         <TouchableOpacity onPress={() => navigation.navigate('Features')}>
           <Text style={styles.menuItem}>Features</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Tenants')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Transactions')}>
           <Text style={styles.menuItem}>Transactions</Text>
         </TouchableOpacity>
         
