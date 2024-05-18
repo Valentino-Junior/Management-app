@@ -56,6 +56,7 @@ const items = [
 const HomeScreen = () => {
   const navigation = useNavigation();
   const slideAnim = new Animated.Value(-300); // Initial value for side menu
+
   const [search, setSearch] = useState('');
   const [filteredItems, setFilteredItems] = useState(items);
 
@@ -88,7 +89,7 @@ const HomeScreen = () => {
   }, [navigation]);
 
 
-  // Start of Search input functionality
+  // Start of Search input logic
   const handleSearch = (text) => {
     setSearch(text);
     const filtered = items.filter(item =>
@@ -97,7 +98,7 @@ const HomeScreen = () => {
     );
     setFilteredItems(filtered);
   };
-  // Start of Search input functionality
+  // Start of Search input logic
 
 
 
@@ -153,13 +154,15 @@ const HomeScreen = () => {
         />
       </View>
 
-
+      {/* Start of Search input functionality */}
       <TextInput
             style={styles.searchBar}
             placeholder="Search by name or location"
             value={search}
             onChangeText={handleSearch}
           />
+      {/* End of Search input functionality */}
+
 
       
         <Text style={styles.title}>Available Cars</Text>
