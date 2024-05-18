@@ -4,7 +4,7 @@ import React from 'react'
 const TransactionScreen = () => {
   return (
     <View>
-      <Text>Transactions</Text>
+      <Text>TransactionScreen</Text>
     </View>
   )
 }
