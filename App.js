@@ -54,7 +54,7 @@ export default function App() {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Signup" component={SignupScreen} />
         <Stack.Screen name="Transactions" component={TransactionScreen} />
-        <Stack.Screen name='Notice' component={NoticeScreen} />
+        <Stack.Screen name='Notice' component={NoticeScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Main" component={MainTabNavigator} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
