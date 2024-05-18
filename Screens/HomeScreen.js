@@ -125,11 +125,9 @@ const HomeScreen = () => {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-          <Text style={styles.menuItem}>Profile</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Features')}>
-          <Text style={styles.menuItem}>Features</Text>
+        
+        <TouchableOpacity onPress={() => navigation.navigate('Notice')}>
+          <Text style={styles.menuItem}>Notices</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Transactions')}>
           <Text style={styles.menuItem}>Transactions</Text>
