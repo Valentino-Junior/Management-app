@@ -145,12 +145,18 @@ const HomeScreen = () => {
 
       </TouchableOpacity>
 
-        
-        <View style={styles.footer}>
-          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-            <Text style={styles.menuItem}>Logout</Text>
-          </TouchableOpacity>
-        </View>
+
+      <View style={styles.footer}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Login')}
+          style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 10 }}
+        >
+        <MaterialIcons name="logout" size={24} color="white" style={{ marginRight: 10 }} />
+        <Text style={{ fontSize: 16, color: 'white'}}>Logout</Text>
+        </TouchableOpacity>
+      </View>
+      
+
       </Animated.View>
 
       <View style={styles.header}>
