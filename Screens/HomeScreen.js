@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, Animated, Easing, StatusBar, SafeAreaView, ScrollView} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, Image, Animated, Easing, StatusBar, SafeAreaView, ScrollView, TextInput} from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
@@ -56,6 +56,10 @@ const items = [
 const HomeScreen = () => {
   const navigation = useNavigation();
   const slideAnim = new Animated.Value(-300); // Initial value for side menu
+  const [search, setSearch] = useState('');
+  const [filteredItems, setFilteredItems] = useState(items);
+
+
 
   const toggleMenu = () => {
     Animated.timing(slideAnim, {
@@ -83,10 +87,21 @@ const HomeScreen = () => {
     return unsubscribe;
   }, [navigation]);
 
+
+  const handleSearch = (text) => {
+    setSearch(text);
+    const filtered = items.filter(item =>
+      item.name.toLowerCase().includes(text.toLowerCase()) ||
+      item.location.toLowerCase().includes(text.toLowerCase())
+    );
+    setFilteredItems(filtered);
+  };
+
+
   return (
 
     <SafeAreaView style={{ backgroundColor: '#f2f2f2' }}>
-      <ScrollView contentContainerStyle={styles.container}>
+      <ScrollView contentContainerStyle={styles.cardcontainer}>
 
 
     <View style={styles.container}>
@@ -136,11 +151,17 @@ const HomeScreen = () => {
       </View>
 
 
-      
+      <TextInput
+            style={styles.searchBar}
+            placeholder="Search by name or location"
+            value={search}
+            onChangeText={handleSearch}
+          />
+
       
         <Text style={styles.title}>Available Cars</Text>
 
-        {items.map(
+        {filteredItems.map(
           (
             { img, name, price, miles, location, date, hp, acceleration },
             index,
@@ -239,6 +260,7 @@ const styles = StyleSheet.create({
   sideMenu: {
     position: 'absolute',
     top: 0,
+    left: 0,
     bottom: 0,
     width: 200,
     height: 500,
@@ -311,7 +333,7 @@ const styles = StyleSheet.create({
   
 /*cards styling*/
   container: {
-    padding: 24,
+    padding: 10,
   },
   
  
@@ -389,6 +411,17 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: '#909090',
   },
+
+  searchBar: {
+    height: 40,
+    borderColor: '#cccccc',
+    borderWidth: 1,
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    marginBottom: 20,
+  },
+
+
 });
 
 export default HomeScreen;
