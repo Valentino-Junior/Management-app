@@ -42,9 +42,8 @@ function MainTabNavigator() {
     >
       <Tab.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
       <Tab.Screen name="Features" component={FeaturesScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }}/>
       <Tab.Screen name="Apps" component={AppScreen} options={{ headerShown: false }}/>
-
+  
     </Tab.Navigator>
   );
 }
