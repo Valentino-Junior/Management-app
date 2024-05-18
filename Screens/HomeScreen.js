@@ -125,7 +125,7 @@ const HomeScreen = () => {
           </TouchableOpacity>
         </View>
 
-        
+        {/* Notices navigation */}
         <TouchableOpacity
           onPress={() => navigation.navigate('Notice')}
           style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 10 }}>
@@ -134,8 +134,10 @@ const HomeScreen = () => {
           <Text style={{ fontSize: 16, color: 'white' }}>Notices</Text>
 
        </TouchableOpacity>
+       {/* End of Notices navigation */}
 
 
+      {/* Transactions navigation */}
       <TouchableOpacity
         onPress={() => navigation.navigate('Transactions')}
         style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 10 }}>
@@ -144,8 +146,10 @@ const HomeScreen = () => {
         <Text style={{ fontSize: 16, color: 'white' }}>Transactions</Text>
 
       </TouchableOpacity>
+      {/*End of Transactions navigation */}
 
 
+      {/* Logout navigation */}
       <View style={styles.footer}>
         <TouchableOpacity
           onPress={() => navigation.navigate('Login')}
@@ -155,7 +159,9 @@ const HomeScreen = () => {
         <Text style={{ fontSize: 16, color: 'white'}}>Logout</Text>
         </TouchableOpacity>
       </View>
-      
+      {/* End of Logout navigation */}
+
+
 
       </Animated.View>
 
