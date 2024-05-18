@@ -26,7 +26,7 @@ function MainTabNavigator() {
 
           if (route.name === 'Home') {
             iconName = 'home';
-          } else if (route.name === 'Features') {
+          } else if (route.name === 'Apps') {
             iconName = 'list';
           } else if (route.name === 'Profile') {
             iconName = 'person';
@@ -41,9 +41,10 @@ function MainTabNavigator() {
       }}
     >
       <Tab.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
-      <Tab.Screen name="Features" component={FeaturesScreen} />
-      <Tab.Screen name="Apps" component={AppScreen} options={{ headerShown: false }}/>
-  
+      <Tab.Screen name="Apps" component={AppScreen} />
+      <Tab.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }}/>
+      
+
     </Tab.Navigator>
   );
 }
