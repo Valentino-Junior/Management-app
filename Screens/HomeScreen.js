@@ -126,12 +126,25 @@ const HomeScreen = () => {
         </View>
 
         
-        <TouchableOpacity onPress={() => navigation.navigate('Notice')}>
-          <Text style={styles.menuItem}>Notices</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Transactions')}>
-          <Text style={styles.menuItem}>Transactions</Text>
-        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Notice')}
+          style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 10 }}>
+
+          <MaterialIcons name="notifications" size={24} color="white" style={{ marginRight: 10 }} />
+          <Text style={{ fontSize: 16, color: 'white' }}>Notices</Text>
+
+       </TouchableOpacity>
+
+
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Transactions')}
+        style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 10 }}>
+
+        <MaterialIcons name="attach-money" size={24} color="white" style={{ marginRight: 10 }} />
+        <Text style={{ fontSize: 16, color: 'white' }}>Transactions</Text>
+
+      </TouchableOpacity>
+
         
         <View style={styles.footer}>
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
