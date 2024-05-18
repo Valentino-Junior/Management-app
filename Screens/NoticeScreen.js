@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Animated, ScrollView, KeyboardAvoidingView } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { MaterialIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+
 
 const Tab = createMaterialTopTabNavigator();
 
 const notices = [];
+
 
 const AllClientsTab = ({ addNotice }) => {
   const [message, setMessage] = useState('');
@@ -83,10 +87,15 @@ const NoticeScreen = () => {
     </View>
   );
 
+  const navigation = useNavigation();
+
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
       <Animated.View style={[styles.header, { transform: [{ translateY: slideAnim }] }]}>
         <Text style={styles.headerText}>Notices</Text>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+          <MaterialIcons name="arrow-back" size={28} color="black" />
+        </TouchableOpacity>
       </Animated.View>
       <View style={styles.tabs}>
         <Tab.Navigator
@@ -190,6 +199,16 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: 'gray',
   },
+
+  backButton: {
+    position: 'absolute',
+    left: 0,
+    paddingHorizontal: 10,
+    color: '#fff', // Change color to white
+    fontSize: 32,    // Increase font size to make it larger
+    fontWeight: 'bold',
+  },
+  
 });
 
 export default NoticeScreen;
