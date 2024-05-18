@@ -88,6 +88,7 @@ const HomeScreen = () => {
   }, [navigation]);
 
 
+  // Start of Search input functionality
   const handleSearch = (text) => {
     setSearch(text);
     const filtered = items.filter(item =>
@@ -96,6 +97,8 @@ const HomeScreen = () => {
     );
     setFilteredItems(filtered);
   };
+  // Start of Search input functionality
+
 
 
   return (
