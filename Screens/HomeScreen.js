@@ -84,6 +84,11 @@ const HomeScreen = () => {
   }, [navigation]);
 
   return (
+
+    <SafeAreaView style={{ backgroundColor: '#f2f2f2' }}>
+      <ScrollView contentContainerStyle={styles.container}>
+
+
     <View style={styles.container}>
       {/* Status Bar */}
       <StatusBar barStyle="light-content" backgroundColor="#841584" />
@@ -129,10 +134,10 @@ const HomeScreen = () => {
           resizeMode="contain"
         />
       </View>
-      
 
-      <SafeAreaView style={{ backgroundColor: '#f2f2f2' }}>
-      <ScrollView contentContainerStyle={styles.container}>
+
+      
+      
         <Text style={styles.title}>Available Cars</Text>
 
         {items.map(
@@ -146,6 +151,7 @@ const HomeScreen = () => {
                 onPress={() => {
                   // handle onPress
                 }}>
+                  
                 <View style={styles.card}>
                   <View style={styles.cardTop}>
                     <Image
@@ -214,11 +220,12 @@ const HomeScreen = () => {
             );
           },
         )}
-      </ScrollView>
-    </SafeAreaView>
-
-
+      
     </View>
+
+
+    </ScrollView>
+    </SafeAreaView>
     
   );
 };
