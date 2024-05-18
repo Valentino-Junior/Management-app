@@ -94,7 +94,7 @@ const NoticeScreen = () => {
       <Animated.View style={[styles.header, { transform: [{ translateY: slideAnim }] }]}>
         <Text style={styles.headerText}>Notices</Text>
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-          <MaterialIcons name="arrow-back" size={28} color="black" />
+          <MaterialIcons name="arrow-back" size={28} color="white" />
         </TouchableOpacity>
       </Animated.View>
       <View style={styles.tabs}>
@@ -200,13 +200,10 @@ const styles = StyleSheet.create({
     color: 'gray',
   },
 
+//   Go back button style
   backButton: {
     position: 'absolute',
     left: 0,
-    paddingHorizontal: 10,
-    color: '#fff', // Change color to white
-    fontSize: 32,    // Increase font size to make it larger
-    fontWeight: 'bold',
   },
   
 });
