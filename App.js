@@ -11,6 +11,7 @@ import WelcomeScreen from './Screens/WelcomeScreen';
 import LoginScreen from './Screens/LoginScreen';
 import SignupScreen from './Screens/SignupScreen';
 import TransactionScreen from './Screens/TransactionScreen';
+import NoticeScreen from './Screens/NoticeScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -53,6 +54,7 @@ export default function App() {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Signup" component={SignupScreen} />
         <Stack.Screen name="Transactions" component={TransactionScreen} />
+        <Stack.Screen name='Notice' component={NoticeScreen} />
         <Stack.Screen name="Main" component={MainTabNavigator} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
