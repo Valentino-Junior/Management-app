@@ -6,6 +6,7 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 
 
 const items = [
+  
   {
     img: 'https://images.unsplash.com/photo-1623659248894-1a0272243054?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2405&q=80',
     name: 'Audi R8',
@@ -14,7 +15,7 @@ const items = [
     acceleration: 3.2,
     miles: 24000,
     location: 'Seattle, WA',
-    date: new Date('2022-10-20'),
+    date: new Date('2024-05-18'),
   },
   {
     img: 'https://images.unsplash.com/photo-1590656364826-5f13b8e32cdc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1065&q=80',
@@ -24,7 +25,7 @@ const items = [
     acceleration: 3.7,
     miles: 13000,
     location: 'Richmond, VA',
-    date: new Date('2022-11-22'),
+    date: new Date('2024-05-18'),
   },
   {
     img: 'https://images.unsplash.com/photo-1580274455191-1c62238fa333?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80',
@@ -34,8 +35,20 @@ const items = [
     acceleration: 3.5,
     miles: 6000,
     location: 'San Diego, CA',
-    date: new Date('2022-11-23'),
+    date: new Date('2024-05-18'),
   },
+
+  {
+    img: 'https://images.unsplash.com/photo-1623659248894-1a0272243054?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2405&q=80',
+    name: 'Audi R8',
+    price: 158600,
+    hp: 562,
+    acceleration: 3.2,
+    miles: 24000,
+    location: 'Seattle, WA',
+    date: new Date('2024-05-18'),
+  }
+
 ];
 
 
