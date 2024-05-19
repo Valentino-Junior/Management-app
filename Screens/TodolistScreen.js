@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, FlatList, TouchableOpacity } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-export default function FeaturesScreen() {
+export default function TodolistScreen() {
   const [tasks, setTasks] = useState([]);
   const [task, setTask] = useState('');
   const [editingTaskIndex, setEditingTaskIndex] = useState(null);
@@ -105,5 +105,6 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
 });
+
 
 

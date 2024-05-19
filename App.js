@@ -5,7 +5,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
 import HomeScreen from './Screens/HomeScreen';
-import FeaturesScreen from './Screens/FeaturesScreen';
 import ProfileScreen from './Screens/ProfileScreen';
 import WelcomeScreen from './Screens/WelcomeScreen';
 import LoginScreen from './Screens/LoginScreen';
@@ -13,6 +12,8 @@ import SignupScreen from './Screens/SignupScreen';
 import TransactionScreen from './Screens/TransactionScreen';
 import NoticeScreen from './Screens/NoticeScreen';
 import AppScreen from './Screens/AppScreen';
+import TodolistScreen from './Screens/TodolistScreen';
+
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -40,9 +41,9 @@ function MainTabNavigator() {
         inactiveTintColor: 'gray',
       }}
     >
-      <Tab.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
-      <Tab.Screen name="Apps" component={AppScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }}/>
+      <Tab.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+      <Tab.Screen name="Apps" component={AppScreen} options={{ headerShown: false }} />
+      <Tab.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
       
 
     </Tab.Navigator>
@@ -59,7 +60,9 @@ export default function App() {
         <Stack.Screen name="Transactions" component={TransactionScreen} />
         <Stack.Screen name='Notice' component={NoticeScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Main" component={MainTabNavigator} options={{ headerShown: false }} />
-        <Stack.Screen name="FeaturesScreen" component={FeaturesScreen} />
+        <Stack.Screen name="Todolist" component={TodolistScreen} options={{ headerShown: false }} />
+
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
