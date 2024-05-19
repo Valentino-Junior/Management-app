@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, FlatList, TouchableOpacity } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 
 export default function TodolistScreen() {
   const [tasks, setTasks] = useState([]);
   const [task, setTask] = useState('');
   const [editingTaskIndex, setEditingTaskIndex] = useState(null);
+  const navigation = useNavigation();
 
   const handleAddTask = () => {
     if (editingTaskIndex !== null) {
@@ -31,7 +33,12 @@ export default function TodolistScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>To-Do List</Text>
+      <View style={styles.header}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+          <Ionicons name="arrow-back" size={28} color="black" />
+        </TouchableOpacity>
+        <Text style={styles.headerTitle}>To-Do List</Text>
+      </View>
       <TextInput
         style={styles.input}
         placeholder="Enter task"
@@ -64,14 +71,25 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#f5f5f5',
+    
   },
-  title: {
+  header: {
+    width: '100%',
+    height: 60,
+    
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 20,
+  },
+  backButton: {
+    position: 'absolute',
+    left: 10,
+  },
+  headerTitle: {
+    color: 'black',
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20,
-    textAlign: 'center',
-    color: '#333',
   },
   input: {
     height: 40,
@@ -105,6 +123,3 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
 });
-
-
-
