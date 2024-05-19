@@ -49,7 +49,7 @@ const AppScreen = () => {
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
           <Ionicons name="arrow-back" size={24} color="#fff" />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>App Screen</Text>
+        <Text style={styles.headerTitle}>Apps</Text>
       </View>
       <Animated.View style={[styles.card, animatedStyle]}>
         <TouchableOpacity
