@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Animated } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Animated, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -51,15 +51,20 @@ const AppScreen = () => {
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Apps</Text>
       </View>
-      <Animated.View style={[styles.card, animatedStyle]}>
-        <TouchableOpacity
-          onPressIn={handlePressIn}
-          onPressOut={handlePressOut}
-          style={styles.touchable}
-        >
-          <Text style={styles.cardText}>Todo App</Text>
-        </TouchableOpacity>
-      </Animated.View>
+
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+       
+          <Animated.View style={[styles.card, animatedStyle]}>
+            <TouchableOpacity
+              onPressIn={handlePressIn}
+              onPressOut={handlePressOut}
+              style={styles.touchable}
+            >
+              <Text style={styles.cardText}>Todo App </Text>
+            </TouchableOpacity>
+          </Animated.View>
+        
+      </ScrollView>
     </View>
   );
 };
@@ -69,8 +74,6 @@ export default AppScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
     padding: 20,
     backgroundColor: '#f2f2f2',
   },
@@ -92,8 +95,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
+  scrollContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
   card: {
-    width: 200,
+    width: '45%',
     height: 100,
     backgroundColor: '#841584',
     borderRadius: 10,
@@ -104,7 +111,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 3,
     elevation: 5,
-    marginBottom: 20,
+    margin: '2.5%',
   },
   touchable: {
     width: '100%',
