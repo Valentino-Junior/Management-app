@@ -59,6 +59,7 @@ export default function App() {
         <Stack.Screen name="Transactions" component={TransactionScreen} />
         <Stack.Screen name='Notice' component={NoticeScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Main" component={MainTabNavigator} options={{ headerShown: false }} />
+        <Stack.Screen name="FeaturesScreen" component={FeaturesScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
