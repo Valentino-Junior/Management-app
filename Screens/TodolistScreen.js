@@ -10,16 +10,19 @@ export default function TodolistScreen() {
   const navigation = useNavigation();
 
   const handleAddTask = () => {
-    if (editingTaskIndex !== null) {
-      // Edit existing task
-      const updatedTasks = tasks.map((item, index) => (index === editingTaskIndex ? task : item));
-      setTasks(updatedTasks);
-      setEditingTaskIndex(null);
-    } else {
-      // Add new task
-      setTasks([...tasks, task]);
+    const trimmedTask = task.trim();
+    if (trimmedTask) {
+      if (editingTaskIndex !== null) {
+        // Edit existing task
+        const updatedTasks = tasks.map((item, index) => (index === editingTaskIndex ? trimmedTask : item));
+        setTasks(updatedTasks);
+        setEditingTaskIndex(null);
+      } else {
+        // Add new task
+        setTasks([...tasks, trimmedTask]);
+      }
+      setTask('');
     }
-    setTask('');
   };
 
   const handleEditTask = (index) => {
@@ -71,12 +74,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    
+    backgroundColor: '#f5f5f5',
   },
   header: {
     width: '100%',
     height: 60,
-    
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
