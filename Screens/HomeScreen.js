@@ -143,10 +143,22 @@ const HomeScreen = () => {
         style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 10 }}>
 
         <MaterialIcons name="attach-money" size={24} color="white" style={{ marginRight: 10 }} />
-        <Text style={{ fontSize: 16, color: 'white' }}>Transactions</Text>
+        <Text style={{ fontSize: 16, color: 'white' }}>Fund wallet</Text>
 
       </TouchableOpacity>
       {/*End of Transactions navigation */}
+
+
+      {/* Settings navigation */}
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Settings')}
+        style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 10 }}>
+
+        <MaterialIcons name="settings" size={24} color="white" style={{ marginRight: 10 }} />
+        <Text style={{ fontSize: 16, color: 'white' }}>Settings</Text>
+
+      </TouchableOpacity>
+      {/*End of Settings navigation */}
 
 
       {/* Logout navigation */}
