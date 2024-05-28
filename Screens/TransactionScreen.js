@@ -136,7 +136,7 @@ const TransactionsTab = ({ transactions }) => {
       renderItem={({ item }) => (
         <View style={styles.transactionItem}>
           <Text style={styles.transactionText}>Code: {item.code}</Text>
-          <Text style={styles.transactionText}>Amount: ${item.amount}</Text>
+          <Text style={styles.transactionText}>Amount: Ksh{item.amount}</Text>
           <Text style={styles.transactionText}>Date: {item.date.toDateString()} {item.date.toLocaleTimeString()}</Text>
           <Text style={styles.transactionText}>Method: {item.method.toUpperCase()}</Text>
         </View>
