@@ -13,6 +13,7 @@ import TransactionScreen from './Screens/TransactionScreen';
 import NoticeScreen from './Screens/NoticeScreen';
 import AppScreen from './Screens/AppScreen';
 import TodolistScreen from './Screens/TodolistScreen';
+import SettingScreen from './Screens/SettingScreen';
 
 
 const Stack = createStackNavigator();
@@ -58,6 +59,7 @@ export default function App() {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Signup" component={SignupScreen} />
         <Stack.Screen name="Transactions" component={TransactionScreen} />
+        <Stack.Screen name='Settings' component={SettingScreen} />
         <Stack.Screen name='Notice' component={NoticeScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Main" component={MainTabNavigator} options={{ headerShown: false }} />
         <Stack.Screen name="Todolist" component={TodolistScreen} options={{ headerShown: false }} />
