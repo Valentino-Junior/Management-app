@@ -58,7 +58,24 @@ export default function App() {
         <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Signup" component={SignupScreen} />
-        <Stack.Screen name="Transactions" component={TransactionScreen} options={{ headerShown: false }} />
+        
+        <Stack.Screen
+  name="Transactions"
+  component={TransactionScreen}
+  options={{
+    title: 'Fund Wallet',
+    headerTitleAlign: 'center',
+    headerStyle: {
+      backgroundColor: '#841584',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+      fontSize: 20,
+    },
+  }}
+/>
+
         <Stack.Screen name='Settings' component={SettingScreen} />
         <Stack.Screen name='Notice' component={NoticeScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Main" component={MainTabNavigator} options={{ headerShown: false }} />
